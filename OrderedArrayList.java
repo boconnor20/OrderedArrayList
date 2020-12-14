@@ -15,7 +15,8 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
       if (element == null) {
         throw new IllegalArgumentException("Your element is null");
       }
-    super.add(element);//need to find index
+    int where = helper(element);
+    super.add(where,element);
     return true;
   }
 
@@ -23,17 +24,18 @@ public class OrderedArrayList<T extends Comparable<T>> extends NoNullArrayList<T
   if (element == null) {
     throw new IllegalArgumentException("Your element is null");
   }
-    super.add(index, element);
+    int where = helper(element);
+    super.add(where, element);
   }
 
   public T set (int index, T element) {
   if (element == null) {
     throw new IllegalArgumentException("Element is null");
   }
-
+    int where = helper(element);
   T old = super.get(index);
-  super.remove(index);
-  super.add(index, element);
+  super.add(where, element);
+  super.remove(old);
   return old;
 }
 
