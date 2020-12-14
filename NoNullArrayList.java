@@ -28,6 +28,15 @@ public class NoNullArrayList<T> extends ArrayList<T>{
     super.add(index, element);
     return old;
   }
+  public NoNullArrayList() {
+    super();
+  }
 
+  public NoNullArrayList(T startingCapacity) {
+    super();
+    if (startingCapacity == null) {
+        throw new IllegalArgumentException("The initial capacity cannot be null");
+    }
+  }
 
 }
